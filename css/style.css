@@ -1,0 +1,49 @@
+@import url('./theme.css');
+
+/* ============================== */
+/* ======== HEADER & NAV ======== */
+/* ============================== */
+.header__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-block: var(--space-3);
+    border-bottom: 0.0625rem solid var(--text15);
+}
+
+.logo {
+    width: 4.5rem;
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+}
+
+.nav__btns {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+}
+
+.nav__toggle,
+#theme-toggle {
+    font-size: var(--h5);
+    cursor: pointer;
+}
+.nav {
+    display: none;
+}
+
+/* ============================== */
+/* =========== FOOTER =========== */
+/* ============================== */
+footer {
+    margin-top: auto;
+}
+
+.footer__container {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding-block: var(--space-3);
+    border-top: 0.0625rem solid var(--text15);
+}
