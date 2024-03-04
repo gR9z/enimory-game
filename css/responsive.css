@@ -1,0 +1,96 @@
+@media screen and (min-width: 768px) {
+    /* ============================== */
+    /* ======== HEADER & NAV ======== */
+    /* ============================== */
+    .nav {
+        position: initial;
+        margin-left: auto;
+        opacity: 1;
+    }
+
+    .nav__list {
+        display: flex;
+        padding: 0;
+        background-color: initial;
+        gap: var(--space-4);
+    }
+
+    .nav__list li:not(:last-child)::after {
+        content: none;
+    }
+
+    .nav__list a {
+        color: var(--primary);
+    }
+
+    .nav__toggle {
+        display: none;
+    }
+
+    /* ====================== */
+    /* ======== HERO ======== */
+    /* ====================== */
+    .hero {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .hero__image {
+        justify-content: center;
+    }
+
+    .hero__image img {
+        width: 75%;
+    }
+
+    /* ==================================== */
+    /* =========== INTRODUCTION =========== */
+    /* ==================================== */
+    .introduction__content {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .introduction__content-left {
+        flex: 1 1 auto;
+    }
+
+    /* ================================ */
+    /* =========== FEATURES =========== */
+    /* ================================ */
+    .feature__content {
+        text-align: center;
+        margin-inline: auto;
+    }
+
+    .feature__grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--space-5);
+        text-align: center;
+    }
+
+    /* ============================= */
+    /* =========== RULES =========== */
+    /* ============================= */
+    .rules {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .rules__image {
+        justify-content: center;
+        order: 0;
+    }
+
+    .rules__image img {
+        width: 75%;
+    }
+
+    /* ============================== */
+    /* =========== FOOTER =========== */
+    /* ============================== */
+    .footer__container {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}

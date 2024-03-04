@@ -76,6 +76,14 @@
     --border-radius-7: 3rem;
     --border-radius-8: 6rem;
     --border-radius-circle: 50%;
+
+    /* ===== Box Shadow ===== */
+    --box-shadow: 6.7px 6.7px 5.3px rgba(0, 0, 0, 0.028),
+        22.3px 22.3px 17.9px rgba(0, 0, 0, 0.042),
+        100px 100px 80px rgba(0, 0, 0, 0.07);
+
+    /* ===== Max Width ===== */
+    --max-width-3: 40rem;
 }
 
 /* ========================================== */
@@ -272,7 +280,6 @@ body {
     font-size: var(--body-fs);
     font-family: var(--body-font);
     line-height: var(--line-height-base);
-
     display: flex;
     flex-direction: column;
     min-height: 100dvh;
@@ -363,7 +370,7 @@ a {
 }
 
 .section-content {
-    margin-block: var(--space-8);
+    margin-block: var(--space-7);
 }
 
 .grid {
@@ -374,16 +381,14 @@ a {
 .button {
     display: inline-flex;
     padding: var(--space-2) var(--space-4);
-    border: none;
+    border: 0.125rem solid var(--primary50);
     border-radius: var(--border-radius-8);
     box-shadow: 0 0.625rem 1.25rem 0 rgba(0, 0, 0, 0.15);
-
+    font-size: var(--h6);
     background: linear-gradient(45deg, var(--secondary), var(--accent));
     transition: 0.8s cubic-bezier(0.2, 1, 0.2, 1);
     cursor: pointer;
-
     font-family: inherit;
-    font-size: var(--h6);
     font-weight: var(--bold);
     line-height: 1;
     color: var(--text);
@@ -394,6 +399,10 @@ a {
     border: 0.125rem solid var(--primary50);
 }
 
+.button--small {
+    font-size: var(--body-fs);
+}
+
 .button:hover {
     transform: translateY(-0.25rem);
     box-shadow: 0 0.938rem 1.875rem 0 rgba(0, 0, 0, 0.25);
@@ -401,6 +410,20 @@ a {
 
 .button:active {
     transform: scale(0.98);
+}
+
+.max-width-3 {
+    max-width: var(--max-width-3);
+}
+
+.separator {
+    display: block;
+    border-bottom: 0.0625rem solid var(--text15);
+}
+
+.text-stroke {
+    color: transparent;
+    -webkit-text-stroke: 0.0625rem var(--primary);
 }
 
 .text-small {

@@ -7,6 +7,7 @@
         <link rel="stylesheet" href="./css/mini-reset.css" />
         <link rel="stylesheet" href="./css/remixicon.css" />
         <link rel="stylesheet" href="./css/style.css" />
+        <link rel="stylesheet" href="./css/responsive.css" />
         <script src="./js/main.js" type="module"></script>
     </head>
     <body>
@@ -19,7 +20,7 @@
                             alt="Logo Enimory"
                         />
 
-                        <h1 class="h4">Enimory</h1>
+                        <span class="h4">Enimory</span>
                     </a>
 
                     <nav id="nav" class="nav">
@@ -42,7 +43,9 @@
 
                     <div class="nav__btns">
                         <i class="ri-sun-line" id="theme-toggle"></i>
-                        <a href="#" class="button button--outline">Play</a>
+                        <a href="#" class="button button--outline button--small"
+                            >Play</a
+                        >
                         <i
                             class="ri-menu-3-line nav__toggle"
                             id="nav-toggle"
@@ -53,16 +56,185 @@
         </header>
 
         <main class="main">
-            <section>
-                <div class="section-content container">
-                    <h1>Landing Page</h1>
+            <section class="section-content">
+                <div class="container hero">
+                    <div class="hero__content max-width-3">
+                        <h1 class="hero__title">
+                            Enimory, the
+                            <span class="text-stroke">Ultimate Memory</span>
+                            Challenge
+                        </h1>
+
+                        <p class="hero__subtitle">
+                            Test your limits, train your brain and become the
+                            ultimate memory master!
+                        </p>
+
+                        <div class="hero__btns">
+                            <button class="button">Play Game</button>
+                            <button class="button button--outline">
+                                Create an Account
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="hero__image">
+                        <img
+                            src="./assets/images/hero.WEBP"
+                            alt="Enimory Image"
+                        />
+                    </div>
+                </div>
+            </section>
+
+            <div class="container">
+                <span class="separator"></span>
+            </div>
+
+            <section class="section-content">
+                <div class="container introduction">
+                    <div class="introduction__content">
+                        <div class="introduction__content-left">
+                            <h2 class="introduction__title">
+                                Welcome to the
+                                <span class="text-stroke">Memory Master</span>
+                                World
+                            </h2>
+                        </div>
+
+                        <div class="introduction__content-right">
+                            <p>
+                                The memory game that will challenge your visual
+                                memory like never before.
+                            </p>
+
+                            <p>
+                                With a variety of themes and levels, get ready
+                                to embark on a captivating adventure that will
+                                stimulate your brain and sharpen your attention
+                                to detail.
+                            </p>
+
+                            <p>
+                                Whether you're a beginner or a memory game
+                                expert, Memory Master offers an exciting
+                                experience for all ages.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <div class="container">
+                <span class="separator"></span>
+            </div>
+
+            <section class="section-content">
+                <div class="container feature">
+                    <div class="feature__content max-width-3">
+                        <h2 class="feature__title">
+                            Key
+                            <span class="text-stroke">Highlights</span>
+                        </h2>
+
+                        <p class="feature__subtitle">
+                            Discover what sets our game apart. Below are the key
+                            highlights that offer a unique, engaging, and
+                            continuously evolving gameplay experience. Each
+                            feature is designed to enrich your journey and
+                            challenge your abilities in new and exciting ways.
+                        </p>
+                    </div>
+
+                    <div class="feature__grid">
+                        <div class="feature__card">
+                            <i class="ri-landscape-line"></i>
+                            <h3 class="feature__card-title">Diverse Themes</h3>
+                            <p class="feature__card-description">
+                                Choose from a broad selection of themes, from
+                                adorable animals to iconic landmarks, to keep
+                                the game engaging and varied.
+                            </p>
+                        </div>
+
+                        <div class="feature__card">
+                            <i class="ri-bar-chart-2-fill"></i>
+                            <h3 class="feature__card-title">
+                                Progressive Levels
+                            </h3>
+                            <p class="feature__card-description">
+                                Begin with easy challenges and progress to more
+                                complex levels that will test your memory and
+                                sharpen your skills.
+                            </p>
+                        </div>
+
+                        <div class="feature__card">
+                            <i class="ri-line-chart-fill"></i>
+                            <h3 class="feature__card-title">
+                                Statistics and Tracking
+                            </h3>
+                            <p class="feature__card-description">
+                                Monitor your progress with detailed stats and
+                                tracking, helping you see how your memory
+                                improves over time.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <div class="container">
+                <span class="separator"></span>
+            </div>
+
+            <section class="section-content">
+                <div class="container rules">
+                    <div class="rules__image">
+                        <img
+                            src="./assets/images/rules.jpg"
+                            alt="Enimory Image"
+                        />
+                    </div>
+
+                    <div class="rules__content max-width-3">
+                        <h2 class="rules__title">
+                            Enimory
+                            <span class="text-stroke">Rules</span>
+                        </h2>
+
+                        <ul class="rules__list">
+                            <li class="rules__list-item">
+                                Objective: Find all matching pairs of cards.
+                            </li>
+                            <li class="rules__list-item">
+                                Play: Flip two cards each turn to find matches.
+                            </li>
+                            <li class="rules__list-item">
+                                Win: Match all pairs to win. The game ends when
+                                all pairs are matched.
+                            </li>
+                            <li class="rules__list-item">
+                                Strategy: Remember card positions to make
+                                matching easier.
+                            </li>
+                            <li class="rules__list-item">
+                                Score Tracking: Registered users can save their
+                                score history.
+                            </li>
+                        </ul>
+
+                        <div class="rules__btn">
+                            <button class="button">Play Enimory Game</button>
+                        </div>
+                    </div>
                 </div>
             </section>
         </main>
 
         <footer class="footer">
             <div class="container">
-                <div class="footer__container text-small">
+                <div class="footer__container">
                     <p>2024 &copy; All rights reserved</p>
                     <p>
                         Design & development by
