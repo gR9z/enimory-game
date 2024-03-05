@@ -42,11 +42,15 @@
     --h6: clamp(1.2rem, 1.047rem + 0.408vw, 1.414rem);
     --body-fs: clamp(1.063rem, 1.018rem + 0.119vw, 1.125rem);
 
-    /* ===== Font weight =====*/
+    /* ===== Small Text ====== */
+    --text-small: 0.833rem;
+    --text-xsmall: 0.7rem;
+
+    /* ===== Font weight ===== */
     --bold: 600;
     --regular: 400;
 
-    /* ===== Line height =====*/
+    /* ===== Line height ===== */
     --line-height-heading: 1.1;
     --line-height-base: 1.7;
 
@@ -83,7 +87,9 @@
         100px 100px 80px rgba(0, 0, 0, 0.07);
 
     /* ===== Max Width ===== */
+    --max-width-2: 30rem;
     --max-width-3: 40rem;
+    --max-width-4: 48rem;
 }
 
 /* ========================================== */
@@ -100,6 +106,7 @@
     --primarycontrast: #64d97b;
     --secondarycontrast: #ffdd00;
     --accentcontrast: #ffdd00;
+    --error: #e13b33;
     --text5: hsl(255, 43%, 9%, 5%);
     --text10: hsl(255, 43%, 9%, 10%);
     --text15: hsl(255, 43%, 9%, 15%);
@@ -192,6 +199,7 @@
     --primarycontrast: #64d97b;
     --secondarycontrast: #64d97b;
     --accentcontrast: #ffdd00;
+    --error: #cc271e;
     --text5: hsl(255, 43%, 91%, 5%);
     --text10: hsl(255, 43%, 91%, 10%);
     --text15: hsl(255, 43%, 91%, 15%);
@@ -439,10 +447,7 @@ a {
     -webkit-text-stroke: 0.0625rem var(--primary);
 }
 
-.text-small {
-    font-size: 0.833rem;
-}
-
-.text-xsmall {
-    font-size: 0.7rem;
+.error {
+    color: var(--error);
+    margin-top: var(--space-4);
 }
