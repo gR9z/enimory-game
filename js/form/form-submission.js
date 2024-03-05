@@ -1,6 +1,12 @@
 import hash from '../utils/hash.js';
 import { displayMessage, removeMessage } from '../common/message-handler.js';
-import passwordStrength from './password-strength.js';
+import {
+    passwordStrength,
+    passwordStrengthIndicator,
+} from './password-strength.js';
+import showPassword from './show-password.js';
+import validateRegistrationData from './validate-registration-data.js';
+import { getUserByEmail } from '../utils/auth-services.js';
 
 const formLogin = document.querySelector('#auth__form-login');
 const formRegister = document.querySelector('#auth__form-register');
@@ -9,10 +15,12 @@ const formLoginMessage = document.querySelector('.auth-form__message--login');
 const formRegisterMessage = document.querySelector(
     '.auth-form__message--register'
 );
+
 const password = document.querySelector('#password-register');
+const authFormIcon = document.querySelector('#auth-form__icon');
 
 const usersInLocalStorage = localStorage.getItem('users');
-const usersParse = new Map(JSON.parse(usersInLocalStorage));
+const parsedUsers = new Map(JSON.parse(usersInLocalStorage));
 
 /* ======================================= */
 /* ======== LOGIN FORM SUBMISSION ======== */
@@ -21,14 +29,16 @@ formLogin.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     const data = Object.fromEntries(new FormData(formLogin));
-
-    const users = [...usersParse.values()];
-    const user = users.find((user) => user.email === data.email);
+    const user = getUserByEmail(data.email);
 
     if (user && user.password === (await hash(data.password))) {
         window.location.href = 'enimory.html';
     } else {
-        displayMessage(formLoginMessage, 'Credentials are not good!', 'error');
+        displayMessage(
+            formLoginMessage,
+            "Oops! We couldn't log you in with those details. Double-check your email and password.",
+            'error'
+        );
     }
 });
 
@@ -39,50 +49,21 @@ formRegister.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     const data = Object.fromEntries(new FormData(formRegister));
+    const validationError = validateRegistrationData(data);
 
-    const users = [...usersParse.values()];
-
-    const user = users.find((user) => user.email === data.email);
-    if (user) {
-        displayMessage(
-            formRegisterMessage,
-            'This email address already exist!',
-            'error'
-        );
-        return;
-    }
-
-    if (data.username.length < 3) {
-        displayMessage(
-            formRegisterMessage,
-            'Username must have at least 3 characters!',
-            'error'
-        );
-        return;
-    }
-
-    if (data.password.length < 6) {
-        displayMessage(
-            formRegisterMessage,
-            'Password must have at least 6 characters!',
-            'error'
-        );
-        return;
-    }
-
-    if (data.password !== data.passwordConfirm) {
-        displayMessage(formRegisterMessage, "Passwords don't match!", 'error');
+    if (validationError) {
+        displayMessage(formRegisterMessage, validationError, 'error');
         return;
     }
 
     data.password = await hash(data.password);
     delete data.passwordConfirm;
 
-    usersParse.set(await hash(data.email), data);
-
-    const userStringify = JSON.stringify(Array.from(usersParse.entries()));
+    parsedUsers.set(await hash(data.email), data);
+    const userStringify = JSON.stringify(Array.from(parsedUsers.entries()));
 
     localStorage.setItem('users', userStringify);
+
     window.location.href = 'settings.html';
 });
 
@@ -92,3 +73,9 @@ formRegister.addEventListener('reset', async (e) => {
 });
 
 formRegister.addEventListener('input', () => passwordStrength(password.value));
+
+password.addEventListener('input', (e) => passwordStrengthIndicator(e));
+
+authFormIcon.addEventListener('click', () =>
+    showPassword(authFormIcon, password)
+);

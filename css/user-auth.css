@@ -56,13 +56,21 @@
     background: transparent;
 }
 
-.auth-form__label {
+.auth-form__label,
+#auth-form__icon {
     position: absolute;
     top: 0;
     left: 0;
     font-size: var(--body-fs);
     pointer-events: none;
     transition: 0.3s;
+}
+
+#auth-form__icon {
+    left: unset;
+    right: 0;
+    pointer-events: initial;
+    cursor: pointer;
 }
 
 .auth-form__field input:focus + label,
@@ -82,4 +90,20 @@
 .auth-form__message {
     font-size: var(--h6);
     line-height: 1.1;
+}
+
+/* FIXME */
+.strength-meter {
+    width: 100%;
+    background-color: var(--text);
+    border-radius: var(--border-radius-2);
+    height: 0.6rem;
+    display: none;
+}
+
+.strength-meter__bar {
+    width: 0%;
+    height: 100%;
+    border-radius: var(--border-radius-2);
+    transition: width 0.5s ease-in-out;
 }
