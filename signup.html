@@ -65,11 +65,147 @@
         </header>
 
         <main class="main">
-            <section class="section-content">
-                <div class="container signup">
-                    <form>
-                        <h1>This is a Signup form</h1>
-                    </form>
+            <section class="section-content auth__section">
+                <div class="container auth__container">
+                    <div class="auth__login">
+                        <h2 class="auth__title">Login</h2>
+
+                        <form id="auth__form-login" class="auth-form">
+                            <div class="auth-form__group">
+                                <div class="auth-form__field">
+                                    <label
+                                        for="email-login"
+                                        class="auth-form__label"
+                                        >Email</label
+                                    >
+
+                                    <input
+                                        type="email"
+                                        id="email-login"
+                                        name="email"
+                                        required
+                                        pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$"
+                                        class="auth-form__input"
+                                    />
+                                </div>
+
+                                <div class="auth-form__field">
+                                    <label
+                                        for="password-login"
+                                        class="auth-form__label"
+                                        >Password</label
+                                    >
+
+                                    <input
+                                        type="password"
+                                        id="password-login"
+                                        name="password"
+                                        required
+                                        pattern="^.{6,}$"
+                                        class="auth-form__input"
+                                    />
+                                </div>
+                            </div>
+
+                            <div class="auth-form__actions">
+                                <button class="button" type="submit">
+                                    Login
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="auth__register">
+                        <h2 class="auth__title">Register</h2>
+
+                        <form id="auth__form-register" class="auth-form">
+                            <div class="auth-form__group">
+                                <div class="auth-form__field">
+                                    <label
+                                        for="username"
+                                        class="auth-form__label"
+                                        >Username</label
+                                    >
+
+                                    <input
+                                        type="text"
+                                        id="username"
+                                        name="username"
+                                        required
+                                        pattern="^.{3,}$"
+                                        class="auth-form__input"
+                                    />
+                                </div>
+
+                                <div class="auth-form__field">
+                                    <label
+                                        for="email-register"
+                                        class="auth-form__label"
+                                        >Email</label
+                                    >
+
+                                    <input
+                                        type="email"
+                                        id="email-register"
+                                        name="email"
+                                        required
+                                        pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$"
+                                        class="auth-form__input"
+                                    />
+                                </div>
+
+                                <div class="auth-form__field">
+                                    <label
+                                        for="password-register"
+                                        class="auth-form__label"
+                                        >Password</label
+                                    >
+
+                                    <input
+                                        type="password"
+                                        id="password-register"
+                                        name="password"
+                                        required
+                                        pattern="^.{6,}$"
+                                        class="auth-form__input"
+                                    />
+                                </div>
+
+                                <div class="auth-form__field">
+                                    <label
+                                        for="passwordConfirm"
+                                        class="auth-form__label"
+                                        >Password confirmation</label
+                                    >
+
+                                    <input
+                                        type="password"
+                                        id="passwordConfirm"
+                                        name="passwordConfirm"
+                                        required
+                                        pattern="^.{6,}$"
+                                        class="auth-form__input"
+                                    />
+                                </div>
+                            </div>
+
+                            <div class="auth-form__actions">
+                                <button class="button" type="submit">
+                                    Register
+                                </button>
+
+                                <button
+                                    class="button button--outline"
+                                    type="reset"
+                                >
+                                    Reset
+                                </button>
+                            </div>
+
+                            <p class="auth-form__message"></p>
+                            <p class="auth-form__hint">* Champs obligatoires</p>
+                        </form>
+                    </div>
                 </div>
             </section>
         </main>
