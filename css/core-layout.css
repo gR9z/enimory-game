@@ -16,6 +16,10 @@
     gap: var(--space-3);
 }
 
+.logo span {
+    font-size: var(--h4);
+}
+
 .nav__btns {
     display: flex;
     align-items: center;

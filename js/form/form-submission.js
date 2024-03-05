@@ -1,5 +1,6 @@
 import hash from '../utils/hash.js';
 import { displayMessage, removeMessage } from '../common/message-handler.js';
+import passwordStrength from './password-strength.js';
 
 const formLogin = document.querySelector('#auth__form-login');
 const formRegister = document.querySelector('#auth__form-register');
@@ -8,6 +9,7 @@ const formLoginMessage = document.querySelector('.auth-form__message--login');
 const formRegisterMessage = document.querySelector(
     '.auth-form__message--register'
 );
+const password = document.querySelector('#password-register');
 
 const usersInLocalStorage = localStorage.getItem('users');
 const usersParse = new Map(JSON.parse(usersInLocalStorage));
@@ -88,3 +90,5 @@ formRegister.addEventListener('reset', async (e) => {
     e.preventDefault();
     removeMessage(formRegisterMessage, 'error');
 });
+
+formRegister.addEventListener('input', () => passwordStrength(password.value));
