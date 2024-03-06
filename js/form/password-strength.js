@@ -1,5 +1,3 @@
-const bar = document.querySelector('#strength-bar');
-
 const passwordStrength = (password) => {
     let strength = 0;
 
@@ -23,7 +21,9 @@ const passwordStrength = (password) => {
 };
 
 const passwordStrengthIndicator = (event) => {
+    const bar = document.querySelector('#strength-bar');
     const strength = passwordStrength(event.target.value);
+
     if (event.target.value) {
         bar.parentElement.style.setProperty('display', 'flex');
     } else {

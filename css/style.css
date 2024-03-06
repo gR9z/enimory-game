@@ -1,5 +1,3 @@
 @import url('./theme.css');
 @import url('./core-layout.css');
-@import url('./landing-page.css');
-@import url('./user-auth.css');
-@import url('./enimory.css');
+@import url('./responsive.css');

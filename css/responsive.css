@@ -46,6 +46,10 @@
         align-items: center;
     }
 
+    .hero__btns {
+        flex-direction: row;
+    }
+
     .hero__image {
         justify-content: center;
     }
@@ -102,6 +106,20 @@
     /* ===================================== */
     .auth__container {
         flex-direction: row;
+    }
+
+    /* ==================================== */
+    /* ============= SETTINGS ============= */
+    /* ==================================== */
+    .settings {
+        flex-direction: row;
+        gap: var(--space-5);
+        align-items: center;
+        text-align: left;
+    }
+
+    .settings-form__field {
+        justify-content: left;
     }
 }
 

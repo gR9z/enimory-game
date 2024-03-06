@@ -87,6 +87,7 @@
         100px 100px 80px rgba(0, 0, 0, 0.07);
 
     /* ===== Max Width ===== */
+    --max-width-1: 20rem;
     --max-width-2: 30rem;
     --max-width-3: 40rem;
     --max-width-4: 48rem;
@@ -342,6 +343,7 @@ h6 {
 a {
     color: var(--primary);
     text-decoration: none;
+    text-align: center;
 }
 
 /* ====================================== */

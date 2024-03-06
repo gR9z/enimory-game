@@ -6,7 +6,10 @@ import {
 } from './password-strength.js';
 import showPassword from './show-password.js';
 import validateRegistrationData from './validate-registration-data.js';
-import { getUserByEmail } from '../utils/auth-services.js';
+import {
+    getUserByEmail,
+    setUserInfoInLocalStorage,
+} from '../auth/auth-services.js';
 
 const formLogin = document.querySelector('#auth__form-login');
 const formRegister = document.querySelector('#auth__form-register');
@@ -32,6 +35,7 @@ formLogin.addEventListener('submit', async (e) => {
     const user = getUserByEmail(data.email);
 
     if (user && user.password === (await hash(data.password))) {
+        setUserInfoInLocalStorage(data.email, user.username);
         window.location.href = 'enimory.html';
     } else {
         displayMessage(
@@ -63,6 +67,7 @@ formRegister.addEventListener('submit', async (e) => {
     const userStringify = JSON.stringify(Array.from(parsedUsers.entries()));
 
     localStorage.setItem('users', userStringify);
+    setUserInfoInLocalStorage(data.email, data.username);
 
     window.location.href = 'settings.html';
 });

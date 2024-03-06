@@ -6,9 +6,11 @@
         <title>Enimory - A memory game by ENI</title>
         <link rel="stylesheet" href="./css/mini-reset.css" />
         <link rel="stylesheet" href="./css/remixicon.css" />
+        <link rel="stylesheet" href="./css/settings.css" />
         <link rel="stylesheet" href="./css/style.css" />
-        <link rel="stylesheet" href="./css/responsive.css" />
         <script src="./js/main.js" type="module"></script>
+        <script src="js/profile/display-user-info.js" type="module"></script>
+        <script src="js/profile/set-user-option.js" type="module"></script>
     </head>
     <body>
         <header class="header">
@@ -68,7 +70,98 @@
         <main class="main">
             <section class="section-content">
                 <div class="container settings">
-                    <h1>Settings Page</h1>
+                    <div class="settings__user-content">
+                        <img
+                            src="assets/images/profile-pic.jpg"
+                            alt="Profile picture"
+                        />
+
+                        <div class="settings__info">
+                            <h1><span id="username"></span></h1>
+                            <p><span id="email"></span></p>
+                        </div>
+                    </div>
+
+                    <span class="separator separator--settings"></span>
+
+                    <div class="settings__form-container">
+                        <div class="settings__title">
+                            <h2>Settings Page</h2>
+                        </div>
+
+                        <form id="settings-form" class="settings-form">
+                            <div class="settings-form__container">
+                                <div class="settings-form__group">
+                                    <div class="settings-form__field">
+                                        <label
+                                            for="memory-theme"
+                                            class="settings-form__label"
+                                            >Theme</label
+                                        >
+
+                                        <select
+                                            name="memory-theme"
+                                            id="memory-theme"
+                                            class="settings-form__select"
+                                        >
+                                            <option value="pets" selected>
+                                                Pets
+                                            </option>
+
+                                            <option value="serial-killers">
+                                                Serial Killers
+                                            </option>
+
+                                            <option value="github">
+                                                GitHub
+                                            </option>
+                                        </select>
+                                    </div>
+
+                                    <div id="settings-form__theme-preview-img">
+                                        <img
+                                            src="/assets/images/tiles/pets/pets-theme.jpg"
+                                            alt="Theme preview"
+                                        />
+                                    </div>
+                                </div>
+                                <div class="settings-form__field">
+                                    <label
+                                        for="memory-difficulty"
+                                        class="settings-form__label"
+                                        >Difficulty</label
+                                    >
+
+                                    <select
+                                        name="memory-difficulty"
+                                        id="memory-difficulty"
+                                        class="settings-form__select"
+                                    >
+                                        <option value="easy">
+                                            Easy (2*6 tiles)
+                                        </option>
+
+                                        <option value="medium" selected>
+                                            Medium (2*8 tiles)
+                                        </option>
+
+                                        <option value="hard">
+                                            Hard (2*10 tiles)
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="settings-form__actions">
+                                <button
+                                    class="button button--small"
+                                    type="submit"
+                                >
+                                    Save Options
+                                </button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </section>
         </main>

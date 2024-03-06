@@ -17,4 +17,8 @@ const getUserByEmail = (email) => {
     return users.find((user) => user.email === email);
 };
 
-export { isUserRegistered, getUserByEmail };
+const setUserInfoInLocalStorage = (email, username) => {
+    localStorage.setItem('userProfileInfo', JSON.stringify([email, username]));
+};
+
+export { isUserRegistered, getUserByEmail, setUserInfoInLocalStorage };

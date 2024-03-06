@@ -1,4 +1,4 @@
-import { isUserRegistered } from '../utils/auth-services.js';
+import { isUserRegistered } from '../auth/auth-services.js';
 
 const validateRegistrationData = (data) => {
     if (data.email && isUserRegistered(data.email)) {
