@@ -1,3 +1,8 @@
+const isAuthenticated = () => {
+    if (!localStorage.getItem('userProfileInfo')) return false;
+    return true;
+};
+
 const getParsedUsers = () => {
     const usersInLocalStorage = localStorage.getItem('users');
     const parsedUsers = usersInLocalStorage
@@ -28,6 +33,7 @@ const updateUserInLocalStorage = (newUserData) => {
 };
 
 export {
+    isAuthenticated,
     getParsedUsers,
     isUserRegistered,
     getUserByEmail,
