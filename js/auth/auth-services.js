@@ -27,4 +27,9 @@ const updateUserInLocalStorage = (newUserData) => {
     localStorage.setItem(key, JSON.stringify(userData));
 };
 
-export { isUserRegistered, getUserByEmail, updateUserInLocalStorage };
+export {
+    getParsedUsers,
+    isUserRegistered,
+    getUserByEmail,
+    updateUserInLocalStorage,
+};

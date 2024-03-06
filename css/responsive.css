@@ -113,9 +113,13 @@
     /* ==================================== */
     .settings {
         flex-direction: row;
-        gap: var(--space-5);
+        gap: var(--space-6);
         align-items: center;
         text-align: left;
+    }
+
+    .separator--settings {
+        display: none;
     }
 
     .settings-form__field {

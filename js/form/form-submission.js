@@ -10,6 +10,7 @@ import {
     getUserByEmail,
     updateUserInLocalStorage,
 } from '../auth/auth-services.js';
+import registerUser from '../auth/user-registration.js';
 
 const formLogin = document.querySelector('#auth__form-login');
 const formRegister = document.querySelector('#auth__form-register');
@@ -21,9 +22,6 @@ const formRegisterMessage = document.querySelector(
 
 const password = document.querySelector('#password-register');
 const authFormIcon = document.querySelector('#auth-form__icon');
-
-const usersInLocalStorage = localStorage.getItem('users');
-const parsedUsers = new Map(JSON.parse(usersInLocalStorage));
 
 /* ======================================= */
 /* ======== LOGIN FORM SUBMISSION ======== */
@@ -57,6 +55,7 @@ formRegister.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     const data = Object.fromEntries(new FormData(formRegister));
+    const emailHash = await hash(data.email);
     const validationError = validateRegistrationData(data);
 
     if (validationError) {
@@ -67,12 +66,7 @@ formRegister.addEventListener('submit', async (e) => {
     data.password = await hash(data.password);
     delete data.passwordConfirm;
 
-    parsedUsers.set(await hash(data.email), data);
-    const userStringify = JSON.stringify(Array.from(parsedUsers.entries()));
-
-    localStorage.setItem('users', userStringify);
-    updateUserInLocalStorage({ email: data.email, username: data.username });
-
+    registerUser(emailHash, data);
     window.location.href = 'settings.html';
 });
 
