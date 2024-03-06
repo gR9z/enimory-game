@@ -40,4 +40,4 @@ const passwordStrengthIndicator = (event) => {
     if (strength === 1) bar.style.backgroundColor = 'var(--textcontrast)';
 };
 
-export { passwordStrength, passwordStrengthIndicator };
+export { passwordStrengthIndicator };

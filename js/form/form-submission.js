@@ -1,9 +1,6 @@
 import hash from '../utils/hash.js';
 import { displayMessage, removeMessage } from '../common/message-handler.js';
-import {
-    passwordStrength,
-    passwordStrengthIndicator,
-} from './password-strength.js';
+import { passwordStrengthIndicator } from './password-strength.js';
 import showPassword from './show-password.js';
 import validateRegistrationData from './validate-registration-data.js';
 import {
@@ -74,8 +71,6 @@ formRegister.addEventListener('reset', async (e) => {
     e.preventDefault();
     removeMessage(formRegisterMessage, 'error');
 });
-
-formRegister.addEventListener('input', () => passwordStrength(password.value));
 
 password.addEventListener('input', (e) => passwordStrengthIndicator(e));
 
