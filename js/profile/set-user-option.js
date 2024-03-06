@@ -1,14 +1,12 @@
-import { getUserInfo } from './display-user-info.js';
+import { updateUserInLocalStorage } from '../auth/auth-services.js';
+
 const optionForm = document.querySelector('#settings-form');
 
 const setUserOptionInLocalStorage = (e) => {
     e.preventDefault();
 
-    const userInfo = getUserInfo();
-    console.log('userInfo', userInfo);
-
     const data = Object.fromEntries(new FormData(optionForm));
-    console.log('data', data);
+    updateUserInLocalStorage(data);
 };
 
 optionForm.addEventListener('submit', setUserOptionInLocalStorage);

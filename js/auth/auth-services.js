@@ -17,8 +17,14 @@ const getUserByEmail = (email) => {
     return users.find((user) => user.email === email);
 };
 
-const setUserInfoInLocalStorage = (email, username) => {
-    localStorage.setItem('userProfileInfo', JSON.stringify([email, username]));
+const updateUserInLocalStorage = (newUserData) => {
+    const key = 'userProfileInfo';
+    const existingData = localStorage.getItem(key);
+
+    let userData = existingData ? JSON.parse(existingData) : {};
+    userData = { ...userData, ...newUserData };
+
+    localStorage.setItem(key, JSON.stringify(userData));
 };
 
-export { isUserRegistered, getUserByEmail, setUserInfoInLocalStorage };
+export { isUserRegistered, getUserByEmail, updateUserInLocalStorage };

@@ -8,7 +8,7 @@ import showPassword from './show-password.js';
 import validateRegistrationData from './validate-registration-data.js';
 import {
     getUserByEmail,
-    setUserInfoInLocalStorage,
+    updateUserInLocalStorage,
 } from '../auth/auth-services.js';
 
 const formLogin = document.querySelector('#auth__form-login');
@@ -35,7 +35,11 @@ formLogin.addEventListener('submit', async (e) => {
     const user = getUserByEmail(data.email);
 
     if (user && user.password === (await hash(data.password))) {
-        setUserInfoInLocalStorage(data.email, user.username);
+        updateUserInLocalStorage({
+            email: user.email,
+            username: user.username,
+        });
+
         window.location.href = 'enimory.html';
     } else {
         displayMessage(
@@ -67,7 +71,7 @@ formRegister.addEventListener('submit', async (e) => {
     const userStringify = JSON.stringify(Array.from(parsedUsers.entries()));
 
     localStorage.setItem('users', userStringify);
-    setUserInfoInLocalStorage(data.email, data.username);
+    updateUserInLocalStorage({ email: data.email, username: data.username });
 
     window.location.href = 'settings.html';
 });

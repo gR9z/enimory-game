@@ -3,7 +3,7 @@ const getUserInfo = () => {
 
     if (userProfileInfo) {
         const parsedUserInfo = JSON.parse(userProfileInfo);
-        const [email, username] = parsedUserInfo;
+        const { email, username } = parsedUserInfo;
 
         return { username, email };
     } else {
