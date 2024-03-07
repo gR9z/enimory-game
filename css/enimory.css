@@ -44,3 +44,27 @@
     width: 100%;
     height: 100%;
 }
+
+.victory-message {
+    position: fixed;
+    max-width: var(--max-width-3);
+    bottom: -10%;
+    right: 50%;
+    transform: translate(50%, 50%);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    padding: var(--space-3);
+    font-size: var(--h4);
+    color: var(--bg);
+    line-height: 1.1;
+    text-align: center;
+    background-color: var(--text90);
+    border-radius: var(--space-2);
+    box-shadow: var(--box-shadow);
+    transition: bottom 0.3s;
+}
+
+.victory-message .button {
+    justify-content: center;
+}

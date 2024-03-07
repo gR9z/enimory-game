@@ -18,6 +18,22 @@ export default class GameManager {
     initGame() {
         this.#board.render();
         this.#attachTileClickListeners();
+
+        document
+            .querySelector('#resetButton')
+            .addEventListener('click', () => this.#restartGame());
+    }
+
+    #restartGame() {
+        //FIXME
+        // console.log(this.#board.getContainer().tile);
+        // this.#board.getContainer().remove();
+        this.#matchPairs = 0;
+        this.#firstSelectedTile = null;
+        this.#secondSelectedTile = null;
+        this.#isProcessing = false;
+        this.#board.initializeTiles();
+        this.#board.render();
     }
 
     #resetTiles() {
@@ -28,7 +44,20 @@ export default class GameManager {
     }
 
     #checkWin() {
-        if (this.#board.getSize() / 2 === this.#matchPairs) return true;
+        if (this.#board.getSize() / 2 === this.#matchPairs) {
+            this.#showVictoryMessage();
+            return true;
+        }
+    }
+
+    #showVictoryMessage() {
+        const victoryMessage = document.querySelector('#victoryMessage');
+        const score = document.querySelector('#score');
+        score.textContent = this.#score;
+
+        setTimeout(() => {
+            victoryMessage.style.bottom = '50%';
+        }, 750);
     }
 
     #attachTileClickListeners() {
@@ -64,11 +93,13 @@ export default class GameManager {
                 this.#firstSelectedTile.getId() ===
                 this.#secondSelectedTile.getId()
             ) {
-                this.#matchPairs++;
                 this.#score++;
+                this.#matchPairs++;
                 this.#resetTiles();
                 this.#checkWin();
             } else {
+                this.#score++;
+
                 setTimeout(() => {
                     this.#firstSelectedTile.flip();
                     this.#board.flipTile(

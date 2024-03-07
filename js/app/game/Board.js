@@ -7,29 +7,12 @@ export default class Board {
     #tiles;
     #container;
 
-    constructor(size = 4, theme = 'pets') {
+    constructor(size = 2, theme = 'pets') {
         this.#size = size;
         this.#theme = theme;
         this.#tiles = [];
         this.#container = document.querySelector('#game');
-        this.#initializeTiles();
-    }
-
-    #initializeTiles() {
-        const themeImagesPath = this.#getImagesPath(this.#theme);
-        const shuffledImages = this.#shuffle(themeImagesPath).slice(
-            0,
-            this.#size / 2
-        );
-
-        let tempTiles = [];
-
-        for (const [index, imagePath] of shuffledImages.entries()) {
-            tempTiles.push(new Tile(index, imagePath));
-            tempTiles.push(new Tile(index, imagePath));
-        }
-
-        this.#tiles = this.#shuffle(tempTiles);
+        this.initializeTiles();
     }
 
     #getImagesPath(theme) {
@@ -50,6 +33,23 @@ export default class Board {
             [array[i], array[j]] = [array[j], array[i]];
         }
         return array;
+    }
+
+    initializeTiles() {
+        const themeImagesPath = this.#getImagesPath(this.#theme);
+        const shuffledImages = this.#shuffle(themeImagesPath).slice(
+            0,
+            this.#size / 2
+        );
+
+        let tempTiles = [];
+
+        for (const [index, imagePath] of shuffledImages.entries()) {
+            tempTiles.push(new Tile(index, imagePath));
+            tempTiles.push(new Tile(index, imagePath));
+        }
+
+        this.#tiles = this.#shuffle(tempTiles);
     }
 
     getSize() {
