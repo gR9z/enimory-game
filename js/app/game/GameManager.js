@@ -67,8 +67,10 @@ export default class GameManager {
                         this.#board.getTiles().indexOf(this.#firstSelectedTile)
                     );
 
-                    this.#firstSelectedTile.flip();
-                    this.#board.getTiles().indexOf(this.#secondSelectedTile);
+                    this.#secondSelectedTile.flip();
+                    this.#board.flipTile(
+                        this.#board.getTiles().indexOf(this.#secondSelectedTile)
+                    );
 
                     this.#resetTiles();
                 }, 1000);

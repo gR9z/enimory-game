@@ -6,7 +6,7 @@ export default class Board {
     #tiles;
     #container;
 
-    constructor(size = 20, theme = 'pets') {
+    constructor(size = 6, theme = 'pets') {
         this.#size = size;
         this.#theme = theme;
         this.#tiles = [];
@@ -69,12 +69,19 @@ export default class Board {
             `[data-index="${tileIndex}"] img`
         );
 
-        imgTileElement.setAttribute(
-            'src',
-            `./assets/images/tiles/${tile.getImage()}`
-        );
-
-        imgTileElement.setAttribute('alt', `${this.#theme}`);
+        if (tile.isTileFlipped()) {
+            imgTileElement.setAttribute(
+                'src',
+                `./assets/images/tiles/${tile.getImage()}`
+            );
+            imgTileElement.setAttribute('alt', `${this.#theme}`);
+        } else {
+            imgTileElement.setAttribute(
+                'src',
+                `./assets/images/tiles/mystery.jpg`
+            );
+            imgTileElement.setAttribute('alt', 'Mystery tile');
+        }
     }
 
     render() {
