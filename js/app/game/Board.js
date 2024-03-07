@@ -1,4 +1,5 @@
 import Tile from './Tile.js';
+import createElement from '../../utils/create-element.js';
 
 export default class Board {
     #size;
@@ -6,7 +7,7 @@ export default class Board {
     #tiles;
     #container;
 
-    constructor(size = 6, theme = 'pets') {
+    constructor(size = 4, theme = 'pets') {
         this.#size = size;
         this.#theme = theme;
         this.#tiles = [];
@@ -51,6 +52,10 @@ export default class Board {
         return array;
     }
 
+    getSize() {
+        return this.#size;
+    }
+
     getContainer() {
         return this.#container;
     }
@@ -64,23 +69,24 @@ export default class Board {
     }
 
     flipTile(tileIndex) {
-        const tile = this.getTile(tileIndex);
-        const imgTileElement = this.#container.querySelector(
-            `[data-index="${tileIndex}"] img`
+        const tileElement = document.querySelector(
+            `[data-index="${tileIndex}"]`
         );
+        const tileInner = tileElement.querySelector('.tile__inner');
+
+        tileElement.classList.toggle('flipped');
+
+        const tile = this.getTile(tileIndex);
+        const imgFront = tileInner.querySelector('.tile__front img');
 
         if (tile.isTileFlipped()) {
-            imgTileElement.setAttribute(
-                'src',
-                `./assets/images/tiles/${tile.getImage()}`
-            );
-            imgTileElement.setAttribute('alt', `${this.#theme}`);
+            imgFront.src = `./assets/images/tiles/${tile.getImage()}`;
+            imgFront.alt = `${this.#theme}`;
         } else {
-            imgTileElement.setAttribute(
-                'src',
-                `./assets/images/tiles/mystery.jpg`
-            );
-            imgTileElement.setAttribute('alt', 'Mystery tile');
+            setTimeout(() => {
+                imgFront.removeAttribute('src');
+                imgFront.removeAttribute('alt');
+            }, 600);
         }
     }
 
@@ -88,10 +94,25 @@ export default class Board {
         const mysteryImagePath = './assets/images/tiles/mystery.jpg';
 
         for (let i = 0; i < this.#size; i++) {
-            const tileElement = document.createElement('div');
-            tileElement.className = 'game__tile';
-            tileElement.dataset.index = i;
-            tileElement.innerHTML = `<img src=${mysteryImagePath} alt="Mystery tile" width="256" height="256" />`;
+            const tileElement = createElement('div', ['tile'], {
+                'data-index': i,
+            });
+            const tileInner = createElement('div', ['tile__inner']);
+
+            const tileFront = createElement('div', ['tile__front']);
+            const tileBack = createElement('div', ['tile__back']);
+
+            const imgFront = createElement('img', [], {});
+            const imgBack = createElement('img', [], {
+                src: mysteryImagePath,
+            });
+
+            tileFront.appendChild(imgFront);
+            tileBack.appendChild(imgBack);
+            tileInner.appendChild(tileFront);
+            tileInner.appendChild(tileBack);
+            tileElement.appendChild(tileInner);
+
             this.#container.appendChild(tileElement);
         }
     }

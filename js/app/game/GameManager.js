@@ -3,12 +3,16 @@ export default class GameManager {
     #firstSelectedTile;
     #secondSelectedTile;
     #isProcessing;
+    #matchPairs;
+    #score;
 
     constructor(board) {
         this.#board = board;
         this.#firstSelectedTile = null;
         this.#secondSelectedTile = null;
         this.#isProcessing = false;
+        this.#matchPairs = 0;
+        this.#score = 0;
     }
 
     initGame() {
@@ -23,10 +27,14 @@ export default class GameManager {
         this.#isProcessing = false;
     }
 
+    #checkWin() {
+        if (this.#board.getSize() / 2 === this.#matchPairs) return true;
+    }
+
     #attachTileClickListeners() {
         const gameContainer = this.#board.getContainer();
         gameContainer.addEventListener('click', (e) => {
-            const tileElement = e.target.closest('.game__tile');
+            const tileElement = e.target.closest('.tile');
 
             if (tileElement) {
                 const clickedTileIndex = Number(tileElement.dataset.index);
@@ -56,11 +64,11 @@ export default class GameManager {
                 this.#firstSelectedTile.getId() ===
                 this.#secondSelectedTile.getId()
             ) {
-                console.log('Ca match!');
+                this.#matchPairs++;
+                this.#score++;
                 this.#resetTiles();
+                this.#checkWin();
             } else {
-                console.log('Ca match ap!');
-
                 setTimeout(() => {
                     this.#firstSelectedTile.flip();
                     this.#board.flipTile(
@@ -73,7 +81,7 @@ export default class GameManager {
                     );
 
                     this.#resetTiles();
-                }, 1000);
+                }, 1500);
             }
         }
     }
