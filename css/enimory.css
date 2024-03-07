@@ -9,3 +9,21 @@
     top: 0;
     pointer-events: none;
 }
+
+.game__board {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-3);
+}
+
+.game__tile {
+    display: flex;
+    border-radius: var(--border-radius-1);
+    background-color: var(--primary);
+    padding: var(--space-1);
+    cursor: pointer;
+}
+
+.game__tile img {
+    border-radius: var(--border-radius-1);
+}

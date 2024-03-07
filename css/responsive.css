@@ -125,6 +125,13 @@
     .settings-form__field {
         justify-content: left;
     }
+
+    /* ==================================== */
+    /* ============= ENIMORY ============== */
+    /* ==================================== */
+    .game__board {
+        grid-template-columns: repeat(3, 1fr);
+    }
 }
 
 @media screen and (min-width: 1024px) {
@@ -133,5 +140,12 @@
     /* ===================================== */
     .auth-form__input {
         margin-bottom: var(--space-1);
+    }
+
+    /* ==================================== */
+    /* ============= ENIMORY ============== */
+    /* ==================================== */
+    .game__board {
+        grid-template-columns: repeat(4, 1fr);
     }
 }
