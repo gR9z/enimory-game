@@ -10,7 +10,9 @@ const toggleTheme = () => {
             htmlElement.setAttribute('data-theme', 'light');
             themeToggle.className = 'ri-moon-line';
             logoElement.src = './assets/images/logo-light.svg';
-        } else {
+        }
+
+        if (currentTheme === 'light') {
             htmlElement.setAttribute('data-theme', 'dark');
             themeToggle.className = 'ri-sun-line';
             logoElement.src = './assets/images/logo-dark.svg';

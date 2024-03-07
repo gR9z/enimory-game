@@ -1,4 +1,5 @@
 .settings {
+    position: relative;
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -83,4 +84,16 @@
 
 .settings-form__actions {
     margin-top: var(--space-5);
+}
+
+#toast {
+    background-color: var(--textcontrast);
+    color: var(--bg);
+    position: fixed;
+    bottom: -10%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: var(--space-1) var(--space-4);
+    border-radius: var(--border-radius-1);
+    transition: bottom 0.3s ease;
 }

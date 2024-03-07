@@ -12,7 +12,7 @@ const getParsedUsers = () => {
     return [...parsedUsers.values()];
 };
 
-const isUserRegistered = (email) => {
+const checkUserEmailRegistration = (email) => {
     const users = getParsedUsers();
     return users.some((user) => user.email === email);
 };
@@ -35,7 +35,7 @@ const updateUserInLocalStorage = (newUserData) => {
 export {
     isAuthenticated,
     getParsedUsers,
-    isUserRegistered,
+    checkUserEmailRegistration,
     getUserByEmail,
     updateUserInLocalStorage,
 };
