@@ -1,7 +1,6 @@
 import { checkUserEmailRegistration } from '../auth/auth-services.js';
 
 const validateRegistrationData = (data) => {
-    console.log(checkUserEmailRegistration(data.email));
     if (data.email && checkUserEmailRegistration(data.email)) {
         return "Looks like you're already with us! Try signing in instead.";
     }

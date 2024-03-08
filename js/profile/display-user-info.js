@@ -10,7 +10,6 @@ const displayUserInfo = () => {
     const difficultySelectElement = document.querySelector('#difficulty');
 
     const { username, email, scores = [], theme, difficulty } = getUserInfo();
-    console.log(difficulty);
     usernameElement.textContent = username;
     emailElement.textContent = email;
 
