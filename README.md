@@ -9,6 +9,7 @@ Ce projet de jeu memory a été développé dans le cadre de la formation Concep
 -   **Design personnalisé :** Utilisation de variables CSS pour les couleurs, l'espacement, les polices et leurs tailles. Adaptation fluide grâce à la fonction `clamp`.
 -   **Pages du site :**
     -   **Landing Page :** Présente le jeu et ses règles.
+    -   **Page d'Authentification :** Permet aux utilisateurs de se connecter ou de créer un compte pour accéder aux paramètres du jeu et enregistrer leurs préférences.
     -   **Page de Paramètres :** Permet aux utilisateurs d'enregistrer leurs préférences (thème et difficulté) et d'afficher les scores des 10 dernières parties.
     -   **Page de Jeu :** Où se déroule le jeu memory, avec gestion des tuiles et logique de jeu.
 -   **Gestion des utilisateurs :** Création de compte et stockage sécurisé (avec hash SHA-256 pour les mots de passe) dans le localStorage. Vérification des doublons d'email et validation des champs en JavaScript.
