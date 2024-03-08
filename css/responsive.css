@@ -123,6 +123,7 @@
     }
 
     .settings-form__field {
+        flex-direction: row;
         justify-content: left;
     }
 }
