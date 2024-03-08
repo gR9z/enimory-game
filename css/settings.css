@@ -24,8 +24,13 @@
     font-size: var(--h5);
 }
 
-.settings__title h2 {
+.settings__title h2,
+.scores__title h2 {
     font-size: var(--h5);
+}
+
+.scores__title {
+    margin-top: var(--space-7);
 }
 
 .separator--settings {
@@ -84,6 +89,15 @@
 
 .settings-form__actions {
     margin-top: var(--space-5);
+    margin-bottom: var(--space-7);
+}
+
+.scores__title {
+    text-align: center;
+}
+
+#scores__list {
+    margin-top: var(--space-3);
 }
 
 #toast {

@@ -3,13 +3,22 @@ const getUserInfo = () => {
 
     if (userProfileInfo) {
         const parsedUserInfo = JSON.parse(userProfileInfo);
-        const { email, username } = parsedUserInfo;
+        const {
+            email,
+            username,
+            scores,
+            theme = 'pets',
+            difficulty = 16,
+        } = parsedUserInfo;
 
-        return { username, email };
+        return { username, email, scores, theme, difficulty };
     } else {
         return {
             username: 'Stranger',
             email: 'im-not-supposed-to-be@here.com',
+            scores: [],
+            theme: 'pets',
+            difficulty: '16',
         };
     }
 };

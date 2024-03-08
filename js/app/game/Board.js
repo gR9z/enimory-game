@@ -36,11 +36,16 @@ export default class Board {
     }
 
     initializeTiles() {
+        const tiles = document.querySelectorAll('.tile');
         const themeImagesPath = this.#getImagesPath(this.#theme);
         const shuffledImages = this.#shuffle(themeImagesPath).slice(
             0,
             this.#size / 2
         );
+
+        for (const tile of tiles) {
+            tile.remove();
+        }
 
         let tempTiles = [];
 
@@ -58,6 +63,10 @@ export default class Board {
 
     getContainer() {
         return this.#container;
+    }
+
+    getTheme() {
+        return this.#theme;
     }
 
     getTiles() {

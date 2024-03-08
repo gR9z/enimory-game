@@ -1,3 +1,4 @@
+import getUserInfo from '../profile/get-user-info.js';
 import Board from './game/Board.js';
 import GameManager from './game/GameManager.js';
 
@@ -8,7 +9,8 @@ particlesJS.load(
     function () {}
 );
 
-const board = new Board();
+const userInfo = getUserInfo();
+const board = new Board(userInfo.difficulty, userInfo.theme);
 const gameManager = new GameManager(board);
 
 gameManager.initGame();

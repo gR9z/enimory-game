@@ -1,3 +1,5 @@
+import getUserInfo from '../../profile/get-user-info.js';
+import { updateUserInLocalStorage } from '../../auth/auth-services.js';
 export default class GameManager {
     #board;
     #firstSelectedTile;
@@ -5,6 +7,7 @@ export default class GameManager {
     #isProcessing;
     #matchPairs;
     #score;
+    #victoryMessage;
 
     constructor(board) {
         this.#board = board;
@@ -13,6 +16,7 @@ export default class GameManager {
         this.#isProcessing = false;
         this.#matchPairs = 0;
         this.#score = 0;
+        this.#victoryMessage = document.querySelector('#victoryMessage');
     }
 
     initGame() {
@@ -25,13 +29,12 @@ export default class GameManager {
     }
 
     #restartGame() {
-        //FIXME
-        // console.log(this.#board.getContainer().tile);
-        // this.#board.getContainer().remove();
         this.#matchPairs = 0;
+        this.#score = 0;
         this.#firstSelectedTile = null;
         this.#secondSelectedTile = null;
         this.#isProcessing = false;
+        this.#hideVictoryMessage();
         this.#board.initializeTiles();
         this.#board.render();
     }
@@ -39,25 +42,53 @@ export default class GameManager {
     #resetTiles() {
         this.#firstSelectedTile = null;
         this.#secondSelectedTile = null;
-
         this.#isProcessing = false;
     }
 
     #checkWin() {
         if (this.#board.getSize() / 2 === this.#matchPairs) {
             this.#showVictoryMessage();
+            this.#updateUserProfileInfo();
             return true;
         }
     }
 
+    #updateUserProfileInfo() {
+        const victoryData = {
+            date: new Date().toISOString(),
+            theme: this.#board.getTheme(),
+            difficulty: this.#board.getSize(),
+            score: this.#score,
+        };
+
+        const key = 'userProfileInfo';
+        const existingData = localStorage.getItem(key);
+        let userProfileInfo = existingData ? JSON.parse(existingData) : {};
+
+        if (!Array.isArray(userProfileInfo.scores)) {
+            userProfileInfo.scores = [];
+        }
+
+        userProfileInfo.scores.unshift(victoryData);
+        userProfileInfo.scores = userProfileInfo.scores.slice(0, 10);
+
+        updateUserInLocalStorage(userProfileInfo);
+    }
+
     #showVictoryMessage() {
-        const victoryMessage = document.querySelector('#victoryMessage');
-        const score = document.querySelector('#score');
-        score.textContent = this.#score;
+        document.querySelector('#score').textContent = this.#score;
 
         setTimeout(() => {
-            victoryMessage.style.bottom = '50%';
-        }, 750);
+            this.#victoryMessage.classList.remove('hidden');
+            this.#victoryMessage.classList.add('visible');
+        }, 300);
+    }
+
+    #hideVictoryMessage() {
+        setTimeout(() => {
+            this.#victoryMessage.classList.remove('visible');
+            this.#victoryMessage.classList.add('hidden');
+        }, 300);
     }
 
     #attachTileClickListeners() {

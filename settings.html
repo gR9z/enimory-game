@@ -97,14 +97,14 @@
                                 <div class="settings-form__group">
                                     <div class="settings-form__field">
                                         <label
-                                            for="memory-theme"
+                                            for="theme"
                                             class="settings-form__label"
                                             >Theme</label
                                         >
 
                                         <select
-                                            name="memory-theme"
-                                            id="memory-theme"
+                                            name="theme"
+                                            id="theme"
                                             class="settings-form__select"
                                         >
                                             <option value="pets" selected>
@@ -130,25 +130,29 @@
                                 </div>
                                 <div class="settings-form__field">
                                     <label
-                                        for="memory-difficulty"
+                                        for="difficulty"
                                         class="settings-form__label"
                                         >Difficulty</label
                                     >
 
                                     <select
-                                        name="memory-difficulty"
-                                        id="memory-difficulty"
+                                        name="difficulty"
+                                        id="difficulty"
                                         class="settings-form__select"
                                     >
-                                        <option value="easy">
+                                        <option value="4">
+                                            Very easy (2*2 tiles)
+                                        </option>
+
+                                        <option value="12">
                                             Easy (2*6 tiles)
                                         </option>
 
-                                        <option value="medium" selected>
+                                        <option value="16" selected>
                                             Medium (2*8 tiles)
                                         </option>
 
-                                        <option value="hard">
+                                        <option value="20">
                                             Hard (2*10 tiles)
                                         </option>
                                     </select>
@@ -164,6 +168,18 @@
                                 </button>
                             </div>
                         </form>
+                    </div>
+                </div>
+
+                <div class="container">
+                    <span class="separator"></span>
+                </div>
+
+                <div class="container scores__title">
+                    <h2>Scores</h2>
+
+                    <div>
+                        <ul id="scores__list"></ul>
                     </div>
                 </div>
             </section>
