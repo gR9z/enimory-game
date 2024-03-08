@@ -25,6 +25,8 @@ const displayUserInfo = () => {
     });
 
     if (Array.isArray(scores) && scores.length) {
+        scores.sort((a, b) => a.score - b.score);
+
         for (const { date, theme, difficulty, score } of scores) {
             const listItem = createElement('li', ['scores__item']);
             const dateObj = new Date(date);
