@@ -1,4 +1,3 @@
-import getUserInfo from '../../profile/get-user-info.js';
 import { updateUserInLocalStorage } from '../../auth/auth-services.js';
 export default class GameManager {
     #board;
@@ -34,9 +33,9 @@ export default class GameManager {
         this.#firstSelectedTile = null;
         this.#secondSelectedTile = null;
         this.#isProcessing = false;
-        this.#hideVictoryMessage();
         this.#board.initializeTiles();
         this.#board.render();
+        this.#hideVictoryMessage();
     }
 
     #resetTiles() {
@@ -85,10 +84,8 @@ export default class GameManager {
     }
 
     #hideVictoryMessage() {
-        setTimeout(() => {
-            this.#victoryMessage.classList.remove('visible');
-            this.#victoryMessage.classList.add('hidden');
-        }, 300);
+        this.#victoryMessage.classList.remove('visible');
+        this.#victoryMessage.classList.add('hidden');
     }
 
     #attachTileClickListeners() {

@@ -98,10 +98,15 @@
 
 #scores__list {
     margin-top: var(--space-3);
+    display: grid;
+    gap: var(--space-2);
+    line-height: var(--line-height-base);
 }
 
 #toast {
     background-color: var(--textcontrast);
+    line-height: var(--line-height-heading);
+    text-align: center;
     color: var(--bg);
     position: fixed;
     bottom: -10%;

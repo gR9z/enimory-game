@@ -95,7 +95,7 @@ export default class Board {
             setTimeout(() => {
                 imgFront.removeAttribute('src');
                 imgFront.removeAttribute('alt');
-            }, 600);
+            }, 300);
         }
     }
 

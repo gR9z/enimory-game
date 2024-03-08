@@ -38,6 +38,7 @@
 }
 
 .tile__front {
+    display: flex;
     transform: rotateY(180deg);
     backface-visibility: hidden;
     position: absolute;
@@ -48,6 +49,7 @@
 }
 
 .tile__back {
+    display: flex;
     width: 100%;
     height: 100%;
 }
